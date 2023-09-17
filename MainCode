@@ -1,0 +1,120 @@
+using System;
+
+static class SavingsAccount
+{
+    
+        const int number = 100;
+        
+        static float negativeBalance = 3.21300006f;
+        static float positiveBalance = 0.5f;
+        static float higherPositiveBalance = 1.621f;
+        static float highestBalance = 2.475f;
+    
+    public static float InterestRate(decimal balance)
+    {
+        if (balance < 0)
+            return negativeBalance;
+    
+        if (balance < 1000)
+            return positiveBalance;
+    
+        if (balance >= 1000 && balance < 5000)
+            return higherPositiveBalance;
+
+        if ( balance >= 5000)
+           return highestBalance; 
+        
+        throw new NotImplementedException("Please implement the (static) SavingsAccount.InterestRate() method");
+    }
+
+    public static decimal Interest(decimal balance)
+    {
+        while (balance < 0)
+        {
+            return (decimal)(negativeBalance / number) * balance; 
+        }
+    
+        while (balance < 1000)
+        {
+            return (decimal)(positiveBalance / number) * balance;
+        }
+    
+        while (balance >= 1000 && balance < 5000)
+        {
+            return (decimal)(higherPositiveBalance / number) * balance;
+        }
+
+        while ( balance >= 5000)
+        {
+           return (decimal)(highestBalance / number) * balance; 
+        }
+        throw new NotImplementedException("Please implement the (static) SavingsAccount.Interest() method");
+    }
+
+    public static decimal AnnualBalanceUpdate(decimal balance)
+    {
+
+        while (balance < 0)
+        {
+            balance += (decimal)(negativeBalance / number) * balance;
+            return balance; 
+        }
+    
+        while (balance < 1000)
+        {
+            balance += (decimal)(positiveBalance / number) * balance;
+            return balance;
+        }
+    
+        while (balance >= 1000 && balance < 5000)
+        {
+            balance += (decimal)(higherPositiveBalance / number) * balance;
+            return balance;
+        }
+
+        while ( balance >= 5000)
+        {
+            balance += (decimal)(highestBalance / number) * balance;
+            return  balance;
+        }
+        
+        throw new NotImplementedException("Please implement the (static) SavingsAccount.AnnualBalanceUpdate() method");
+    }
+
+    public static int YearsBeforeDesiredBalance(decimal balance, decimal targetBalance)
+    {
+
+        int year = 0;
+        
+        while (balance < targetBalance)
+        {
+            if (balance < 0)
+            {
+                balance += (decimal)(negativeBalance / number) * balance;
+                year++;       
+            }
+    
+            if (balance < 1000)
+            {
+                balance += (decimal)(positiveBalance / number) * balance;
+                year++;
+            }
+    
+            if (balance >= 1000 && balance < 5000)
+            {
+                balance += (decimal)(higherPositiveBalance / number) * balance;
+                year++;
+            }
+
+            if ( balance >= 5000)
+            {
+                balance += (decimal)(highestBalance / number) * balance;
+                year++;
+            }   
+        }
+    return year;
+            
+        
+        throw new NotImplementedException("Please implement the (static) SavingsAccount.YearsBeforeDesiredBalance() method");
+    }
+}
